@@ -21,11 +21,26 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    if ([[segue identifier] isEqualToString:@"enterGameSegue"]) {
+    self.user = [[User alloc] init];
+    
+    if(sender == self.mafiaButton) {
         
-        GameViewController *gameVC = segue.destinationViewController;
+        self.user.mafia = YES;
         
-        gameVC.user = self.user;
+        GameViewController *gVC = segue.destinationViewController;
+        
+        gVC.user = self.user;
+        
+    }
+    
+    else if(sender == self.sheriffButton) {
+        
+        self.user.sheriff = YES;
+        
+        GameViewController *gVC = segue.destinationViewController;
+        
+        gVC.user = self.user;
+        
     }
     
 }

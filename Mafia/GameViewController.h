@@ -12,5 +12,9 @@
 @interface GameViewController : UIViewController
 
 @property (nonatomic, strong) User *user;
+@property (strong, nonatomic) IBOutlet UITextView *welcomeMessage;
+@property (strong, nonatomic) IBOutlet UILabel *villagerCount;
+@property (strong, nonatomic) IBOutlet UITextView *instructionsText;
+
 
 @end

@@ -16,6 +16,7 @@
 		526DB55419F592DC001F29D0 /* MafiaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 526DB55319F592DC001F29D0 /* MafiaTests.m */; };
 		526DB55F19F596F2001F29D0 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 526DB55E19F596F2001F29D0 /* User.m */; };
 		526DB56519F5ADC8001F29D0 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 526DB56419F5ADC8001F29D0 /* GameViewController.m */; };
+		526DB56819F5C798001F29D0 /* MiniGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 526DB56719F5C798001F29D0 /* MiniGameViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,8 @@
 		526DB55E19F596F2001F29D0 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		526DB56319F5ADC8001F29D0 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		526DB56419F5ADC8001F29D0 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		526DB56619F5C798001F29D0 /* MiniGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiniGameViewController.h; sourceTree = "<group>"; };
+		526DB56719F5C798001F29D0 /* MiniGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiniGameViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +96,8 @@
 				526DB53F19F592DC001F29D0 /* ViewController.m */,
 				526DB56319F5ADC8001F29D0 /* GameViewController.h */,
 				526DB56419F5ADC8001F29D0 /* GameViewController.m */,
+				526DB56619F5C798001F29D0 /* MiniGameViewController.h */,
+				526DB56719F5C798001F29D0 /* MiniGameViewController.m */,
 				526DB54119F592DC001F29D0 /* Main.storyboard */,
 				526DB55D19F596F2001F29D0 /* User.h */,
 				526DB55E19F596F2001F29D0 /* User.m */,
@@ -230,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				526DB56519F5ADC8001F29D0 /* GameViewController.m in Sources */,
+				526DB56819F5C798001F29D0 /* MiniGameViewController.m in Sources */,
 				526DB55F19F596F2001F29D0 /* User.m in Sources */,
 				526DB54019F592DC001F29D0 /* ViewController.m in Sources */,
 				526DB53D19F592DC001F29D0 /* AppDelegate.m in Sources */,

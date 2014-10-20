@@ -8,7 +8,11 @@
 
 #import "GameViewController.h"
 
-@interface GameViewController ()
+@interface GameViewController () {
+    
+    int numOfVillagers;
+    
+}
 
 @end
 
@@ -16,13 +20,36 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    numOfVillagers = 10;
+    
+    if (self.user.mafia) {
+        [self setupMafia];
+        NSLog(@"Mafia setup!");
+    }
+    
+    else if (self.user.sheriff){
+        
+        [self setupSheriff];
+         NSLog(@"Sheriff setup!");
+    }
+    
+    self.villagerCount.text = [NSString stringWithFormat:@"There are %d villagers in the village.", numOfVillagers];
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)setupMafia{
+    
+    self.welcomeMessage.text = @"You have chosen the role of Mafia.  Welcome to the village.";
+    self.instructionsText.text = @"Your objective is to kill all the villagers before the sheriff finds you.  Pressing the button below will start a mini game, where successful completion will kill off one villager.  Kill them all to win.";
 }
+
+-(void)setupSheriff {
+    
+    self.welcomeMessage.text = @"You have chosen the role of Sheriff.  Welcome to the village.";
+    self.instructionsText.text = @"Your objective is to find the Mafia before all the villagers are killed. Pressing the button below will start a mini game, where successful completion will give you a chance to find the mafia amoung the villagers.";
+}
+
 
 /*
 #pragma mark - Navigation

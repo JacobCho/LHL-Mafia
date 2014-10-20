@@ -7,17 +7,37 @@
 //
 
 #import "ViewController.h"
+#import "GameViewController.h"
 
-@interface ViewController ()
-
+@interface ViewController () 
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([[segue identifier] isEqualToString:@"enterGameSegue"]) {
+        
+        GameViewController *gameVC = segue.destinationViewController;
+        
+        gameVC.user = self.user;
+    }
+    
+}
 
+- (IBAction)mafiaButtonPressed:(UIButton *)sender {
+    
+    self.user.mafia = YES;
+    
+}
+
+- (IBAction)sheriffButtonPressed:(UIButton *)sender {
+    
+    self.user.sheriff = YES;
+}
 @end

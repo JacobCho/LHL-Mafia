@@ -7,21 +7,21 @@
 //
 
 #import "GameViewController.h"
+#import "MiniGameViewController.h"
 
-@interface GameViewController () {
-    
-    int numOfVillagers;
-    
-}
+
+@interface GameViewController () <MiniGameViewControllerDelegate>
 
 @end
 
-@implementation GameViewController
+@implementation GameViewController {
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    numOfVillagers = 10;
+    self.numOfVillagers = 5;
     
     if (self.user.mafia) {
         [self setupMafia];
@@ -34,7 +34,14 @@
          NSLog(@"Sheriff setup!");
     }
     
-    self.villagerCount.text = [NSString stringWithFormat:@"There are %d villagers in the village.", numOfVillagers];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:YES];
+    
+    self.villagerCount.text = [NSString stringWithFormat:@"There are %d villagers in the village.", self.numOfVillagers];
+    
     
 }
 
@@ -50,15 +57,47 @@
     self.instructionsText.text = @"Your objective is to find the Mafia before all the villagers are killed. Pressing the button below will start a mini game, where successful completion will give you a chance to find the mafia amoung the villagers.";
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([[segue identifier] isEqualToString:@"minigameSegue"]) {
+        
+        MiniGameViewController *miniGVC = segue.destinationViewController;
+        
+        miniGVC.delegate = self;
+        
+    }
+    
+    
 }
-*/
+
+
+-(void)didWinMiniGame {
+    
+    if (self.user.mafia) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Right!" message:@"A villager has been killed!" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        
+        [alertView show];
+
+        self.numOfVillagers--;
+    } else if (self.user.sheriff) {
+        
+        
+    }
+}
+
+-(void)didLoseMiniGame {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Wrong!" message:nil delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    [alertView show];
+    
+}
+
+-(void)findMafia {
+    
+    
+}
+
+
+
+
 
 @end

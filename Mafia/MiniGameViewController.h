@@ -7,7 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QuestionSet.h"
+
+
+@protocol MiniGameViewControllerDelegate <NSObject>
+
+-(void)didWinMiniGame;
+-(void)didLoseMiniGame;
+
+@end
 
 @interface MiniGameViewController : UIViewController
+
+@property (nonatomic, weak) id <MiniGameViewControllerDelegate> delegate;
+
+
+
 
 @end

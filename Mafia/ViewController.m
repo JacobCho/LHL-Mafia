@@ -19,6 +19,14 @@
     
 }
 
+-(void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:YES];
+    
+    self.user.mafia = NO;
+    self.user.sheriff = NO;
+}
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     self.user = [[User alloc] init];

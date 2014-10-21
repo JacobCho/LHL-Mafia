@@ -67,7 +67,6 @@
         
     }
     
-    
 }
 
 
@@ -79,24 +78,71 @@
         [alertView show];
 
         self.numOfVillagers--;
+        [self mafiaWinCheck];
     } else if (self.user.sheriff) {
         
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Right!" message:@"Mafia search conducted. You're getting closer." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         
+        [alertView show];
+        
+        [self findMafia];
     }
 }
 
 -(void)didLoseMiniGame {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Wrong!" message:nil delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-    [alertView show];
+    
+    
+    if (self.user.mafia) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Wrong!" message:@"The sheriff is getting closer!" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alertView show];
+        
+        [self findMafia];
+    }
+    else if (self.user.sheriff) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Wrong!" message:@"The mafia is getting away!" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alertView show];
+        
+    }
     
 }
 
 -(void)findMafia {
     
+    NSInteger *sheriffSearch = (int)(arc4random()% self.numOfVillagers + 1);
+    
+    NSInteger *mafiaEscape = (int)(arc4random()% self.numOfVillagers + 1);
+    
+    
+    if (sheriffSearch == mafiaEscape) {
+        
+        if (self.user.mafia) {
+        
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"You have been found!" message:@"Game Over" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            [alertView show];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
+        else if (self.user.sheriff) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"You found the mafia!" message:@"The Mafia has confessed to his crimes. You win!" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            [alertView show];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
+        
+    }
+    
     
 }
 
-
+-(void)mafiaWinCheck {
+    
+    if (self.numOfVillagers == 0) {
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Villagers killed!" message:@"All villagers have been killed! You have won the game!" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alertView show];
+        
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+    
+}
 
 
 
